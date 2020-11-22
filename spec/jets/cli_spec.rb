@@ -1,9 +1,7 @@
-RSpec.describe Jets::Cli do
-  it "has a version number" do
-    expect(Jets::Cli::VERSION).not_to be nil
-  end
+require "spec_helper"
 
-  it "does something useful" do
-    expect(false).to eq(true)
+RSpec.describe Jets::CLI do
+  it "has a version number" do
+    expect(Jets::CLI::VERSION).not_to be nil
   end
 end

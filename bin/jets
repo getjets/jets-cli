@@ -3,4 +3,12 @@
 require "bundler/setup"
 require "jets/cli"
 
-Jets::CLI.new.call
+begin
+  Jets::CLI::Main.start(ARGV)
+rescue Jets::CLI::Exceptions::CommandFailed => exception
+  if ENV["DEBUG"]
+    puts "Command failed with: #{exception.message}"
+    puts exception.backtrace.take(15).join("\n")
+  end
+  exit(1)
+end
