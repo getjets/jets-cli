@@ -2,12 +2,12 @@ PATH
   remote: ../jets-rubocop
   specs:
     jets-rubocop (0.1.0)
-      fuubar (>= 2.5)
-      pry
-      rspec-instafail (>= 1.0)
-      rspec_junit_formatter (>= 0.4)
-      rubocop-rails
-      rubocop-rspec
+      fuubar (~> 2.5)
+      pry (~> 0.13)
+      rspec-instafail (~> 1.0)
+      rspec_junit_formatter (~> 0.4)
+      rubocop-rails (~> 2.6)
+      rubocop-rspec (~> 1.41)
       standard (~> 0.3.0)
 
 PATH
