@@ -2,6 +2,8 @@
 
 require_relative "lib/jets/cli/version"
 
+rails_version = "~> 6.0"
+
 Gem::Specification.new do |spec|
   spec.name = "jets-cli"
   spec.version = Jets::CLI::VERSION
@@ -27,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables << "jets"
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "rails", rails_version
   spec.add_dependency "thor"
 
   spec.add_development_dependency "aruba"

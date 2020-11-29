@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
+require "rails/generators"
+
 module Jets
   module Generators
-    class EngineGenerator < Rails::Generators::NamedBase
+    class EngineGenerator < ::Rails::Generators::NamedBase
+      include ::Rails::Generators::ResourceHelpers
+
+      namespace "jets"
       source_root File.expand_path("templates", __dir__)
+
+      desc "Generates a Rails engine with given NAME with Jets conventions " \
+           "and configurations."
 
       def create_engine_file
         directory(".", "engines/#{name}")
