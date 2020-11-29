@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "jets/cli/exceptions"
-require "jets/cli"
+require "jets-cli"
 
 begin
   Jets::CLI::Main.start(ARGV)
