@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "thor"
+require "bundler"
 
 module Jets
   module CLI
@@ -28,11 +29,51 @@ module Jets
         end
       end
 
+      desc "NAME console", "Run `rails console` for given engine"
+      long_desc <<-LONGDESC
+        `jets NAME console` will run Rails console for given engine.
+      LONGDESC
+      def console
+        exec_command("./bin/console")
+      end
+
       desc "NAME rails [OPTIONS]", "Run `rails` command for given engine"
+      long_desc <<-LONGDESC
+        `jets NAME rails` will run Rails commands for given engine.
+      LONGDESC
+
       def rails(*args)
         exec_command("./bin/rails", *args)
       end
 
+      desc "NAME yarn", "Run `yarn` for given engine"
+      long_desc <<-LONGDESC
+        `jets NAME yarn` will run yarn for given engine.
+      LONGDESC
+      def yarn(*args)
+        exec_command("yarn", *args)
+      end
+
+      def method_missing(engine_or_gem, *args)
+        options = 
+          case engine_or_gem.to_s
+          when "all"
+            { all: true }
+          when "all-gems"
+            { all_gems: true }
+          when "all-engines"
+            { all_engines: true }
+          when *engines
+            { engine: engine_or_gem.to_s }
+          when *gems
+            { engine: engine_or_gem.to_s, gem: true }
+          end
+
+        return super if options.nil?
+
+        self.class.start(args, class_options: options)
+      end
+      
       private
 
       def engine
@@ -52,7 +93,7 @@ module Jets
       end
 
       def app_root
-        # @app_root ||= File.expand_path("..", __dir__)
+        # @app_root ||= File.expand_path("../../..", __dir__)
         @app_root ||= if defined?(Rails)
           Rails.root
         else
@@ -89,7 +130,7 @@ module Jets
         message = "Command `#{command}` (from #{dir}) returned non-zero exit code"
 
         $stdout.puts message
-        raise CommandFailedException, message unless options[:ignore_failures]
+        raise ::Jets::CLI::Exceptions::CommandFailed, message unless options[:ignore_failures]
       end
     end
   end

@@ -15,7 +15,7 @@ PATH
   specs:
     jets-cli (0.1.0)
       rails (~> 6.0)
-      thor
+      thor (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -251,11 +251,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
-  bundler
+  aruba (~> 1.0)
+  bundler (~> 2)
   jets-cli!
   jets-rubocop!
-  pry
+  pry (~> 0.13)
   rake (~> 12.0)
   rspec (~> 3.0)
 

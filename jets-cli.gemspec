@@ -6,7 +6,7 @@ rails_version = "~> 6.0"
 
 Gem::Specification.new do |spec|
   spec.name = "jets-cli"
-  spec.version = Jets::CLI::VERSION
+  spec.version = Jets::CLI::VERSION.dup
   spec.authors = ["Lauri Jutila"]
 
   spec.summary = "Jets CLI"
@@ -30,13 +30,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails", rails_version
-  spec.add_dependency "thor"
+  spec.add_dependency "thor", "~> 1.0"
 
-  spec.add_development_dependency "aruba"
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "aruba", "~> 1.0"
+  spec.add_development_dependency "bundler", "~> 2"
+  spec.add_development_dependency "pry", "~> 0.13"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rspec", "~> 3.9"
 
-  spec.add_development_dependency "jets-rubocop"
+  spec.add_development_dependency "jets-rubocop", "~> 0.1"
 end
