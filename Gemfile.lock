@@ -2,18 +2,18 @@ PATH
   remote: ../jets-rubocop
   specs:
     jets-rubocop (0.1.0)
-      fuubar (~> 2.5)
-      pry (~> 0.13)
-      rspec-instafail (~> 1.0)
-      rspec_junit_formatter (~> 0.4)
-      rubocop-rails (~> 2.6)
-      rubocop-rspec (~> 1.41)
+      fuubar (>= 2.5)
+      pry
+      rspec-instafail (>= 1.0)
+      rspec_junit_formatter (>= 0.4)
+      rubocop-rails
+      rubocop-rspec
       standard (~> 0.3.0)
 
 PATH
   remote: .
   specs:
-    jets-cli (0.1.0)
+    jets-cli (0.1.1)
       rails (~> 6.0)
       thor (~> 1.0)
 
@@ -131,7 +131,7 @@ GEM
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -140,14 +140,17 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
     middleware (0.1.0)
-    mimemagic (0.3.5)
-    mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
+    mini_mime (1.0.3)
+    mini_portile2 (2.5.0)
     minitest (5.14.2)
     multi_test (0.1.2)
-    nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nio4r (2.5.7)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -159,6 +162,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -195,17 +199,17 @@ GEM
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
       rspec-mocks (~> 3.10.0)
-    rspec-core (3.10.0)
+    rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
-    rspec-expectations (3.10.0)
+    rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-instafail (1.0.0)
       rspec
-    rspec-mocks (3.10.0)
+    rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
-    rspec-support (3.10.0)
+    rspec-support (3.10.2)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.82.0)
@@ -260,4 +264,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   2.1.4
+   2.2.14
