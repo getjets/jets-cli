@@ -55,23 +55,40 @@ module Jets
       end
 
       def method_missing(engine_or_gem, *args)
-        options = 
+        options =
           case engine_or_gem.to_s
           when "all"
-            { all: true }
+            {all: true}
           when "all-gems"
-            { all_gems: true }
+            {all_gems: true}
           when "all-engines"
-            { all_engines: true }
+            {all_engines: true}
           when *engines
-            { engine: engine_or_gem.to_s }
+            {engine: engine_or_gem.to_s}
           when *gems
-            { engine: engine_or_gem.to_s, gem: true }
+            {engine: engine_or_gem.to_s, gem: true}
           end
 
         return super if options.nil?
 
         self.class.start(args, class_options: options)
+      end
+
+      def respond_to_missing?(engine_or_gem, *args)
+        case engine_or_gem.to_s
+        when "all"
+          true
+        when "all-gems"
+          true
+        when "all-engines"
+          true
+        when *engines
+          true
+        when *gems
+          true
+        else
+          false
+        end
       end
       
       private
@@ -101,6 +118,7 @@ module Jets
         end
       end
 
+      # rubocop:disable Lint/MixedRegexpCaptureTypes
       def exec_command(*args)
         if engine.nil? || engine.empty?
           @engine = args.each do |arg|
@@ -117,6 +135,7 @@ module Jets
 
         subshell(engine_root, *args)
       end
+      # rubocop:enable Lint/MixedRegexpCaptureTypes
 
       def subshell(dir, command, *args)
         Bundler.with_original_env do
