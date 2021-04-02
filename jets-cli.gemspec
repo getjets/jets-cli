@@ -2,7 +2,7 @@
 
 require_relative "lib/jets/cli/version"
 
-rails_version = "~> 6.0"
+rails_version = "~> 6.1"
 
 Gem::Specification.new do |spec|
   spec.name = "jets-cli"
